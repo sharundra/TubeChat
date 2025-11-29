@@ -115,3 +115,15 @@ The backend handles the heavy lifting: fetching transcripts and running the LLM 
 6.  **Generation:** Relevant chunks + the user question are sent to GPT-3.5 via a LangChain pipeline to generate an answer.
 
 ---
+
+## 🚀 Future Improvements
+- [ ] **Chat History:** Add memory to the LangChain pipeline for multi-turn conversations.
+- [ ] **Timestamp Linking:** Make timestamps in the chat clickable to jump the video player to that time.
+- [ ] **Cloud Deployment:** Dockerize the backend and deploy to Render/AWS.
+- [ ] **Model Selection:** Allow users to switch between GPT-3.5 and GPT-4.
+
+---
+
+## 🤝 Contributing
+Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
+
