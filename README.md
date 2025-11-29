@@ -1,9 +1,11 @@
+Here is the raw content for your `README.md`.
 
-code
-Markdown
-download
-content_copy
-expand_less
+**How to use this:**
+1.  In VS Code, create a file named `README.md` inside your `TubeChat` folder.
+2.  **Copy the code block below** (click the "Copy" button in the top right of the block).
+3.  **Paste** it directly into your `README.md` file.
+
+```markdown
 # TubeChat 🤖: RAG-Powered YouTube Assistant
 
 **TubeChat** is a full-stack Generative AI application that transforms how users interact with video content. It integrates a **Chrome Extension** frontend with a **Python/LangChain** backend to provide real-time, context-aware Q&A for any YouTube video.
@@ -51,123 +53,87 @@ TubeChat/
     ├── manifest.json      # Chrome Extension configuration
     ├── content.js         # Content script for DOM injection & API communication
     └── styles.css         # Sidebar UI styling
-⚙️ Installation & Setup
-1. Backend Setup
+```
 
+---
+
+## ⚙️ Installation & Setup
+
+### 1. Backend Setup
 The backend handles the heavy lifting: fetching transcripts and running the LLM chain.
 
-Clone the repository:
+1.  **Clone the repository:**
+    ```bash
+    git clone https://github.com/yourusername/TubeChat.git
+    cd TubeChat/backend
+    ```
 
-code
-Bash
-download
-content_copy
-expand_less
-git clone https://github.com/yourusername/TubeChat.git
-cd TubeChat/backend
+2.  **Create a virtual environment:**
+    ```bash
+    python -m venv venv
+    source venv/bin/activate  # On Windows: venv\Scripts\activate
+    ```
 
-Create a virtual environment:
+3.  **Install dependencies:**
+    ```bash
+    pip install -r requirements.txt
+    ```
 
-code
-Bash
-download
-content_copy
-expand_less
-python -m venv venv
-source venv/bin/activate  # On Windows: venv\Scripts\activate
+4.  **Set up Environment Variables:**
+    Create a `.env` file in the `backend/` folder and add your OpenAI API key:
+    ```text
+    OPENAI_API_KEY=sk-your-api-key-here
+    ```
 
-Install dependencies:
+5.  **Run the Server:**
+    ```bash
+    python main.py
+    ```
+    *The server will start at `http://0.0.0.0:8000`.*
 
-code
-Bash
-download
-content_copy
-expand_less
-pip install -r requirements.txt
+### 2. Frontend Setup (Chrome Extension)
+1.  Open Google Chrome and navigate to `chrome://extensions/`.
+2.  Toggle **Developer mode** in the top right corner.
+3.  Click **Load unpacked**.
+4.  Select the **`extension`** folder inside the `TubeChat` directory (do not select the root folder).
+5.  The extension is now installed!
 
-Set up Environment Variables:
-Create a .env file in the backend/ folder and add your OpenAI API key:
+---
 
-code
-Text
-download
-content_copy
-expand_less
-OPENAI_API_KEY=sk-your-api-key-here
+## 📖 Usage Guide
 
-Run the Server:
+1.  Ensure the backend server is running (`python main.py`).
+2.  Open any YouTube video (e.g., a podcast or tutorial).
+3.  A dark sidebar will appear on the right side of the screen.
+4.  The bot will automatically initialize:
+    *   *Status: "Processing transcript..."*
+    *   *Status: "Ready! Ask me anything."*
+5.  Type a question (e.g., *"What is the main conclusion?"*) and hit Enter.
 
-code
-Bash
-download
-content_copy
-expand_less
-python main.py
+---
 
-The server will start at http://0.0.0.0:8000.
+## 🧠 Architecture Flow
 
-2. Frontend Setup (Chrome Extension)
+1.  **Trigger:** `content.js` detects a YouTube URL and extracts the `video_id`.
+2.  **Request:** The extension sends a POST request to the FastAPI endpoint `/process`.
+3.  **Ingestion:** `rag_engine.py` fetches the transcript using `YouTubeTranscriptApi`.
+4.  **Indexing:** Text is split into chunks and embedded using `OpenAIEmbeddings`, then stored in a local `FAISS` index.
+5.  **Query:** When the user asks a question, the system performs a similarity search on the vector store.
+6.  **Generation:** Relevant chunks + the user question are sent to GPT-3.5 via a LangChain pipeline to generate an answer.
 
-Open Google Chrome and navigate to chrome://extensions/.
+---
 
-Toggle Developer mode in the top right corner.
+## 🚀 Future Improvements
+- [ ] **Chat History:** Add memory to the LangChain pipeline for multi-turn conversations.
+- [ ] **Timestamp Linking:** Make timestamps in the chat clickable to jump the video player to that time.
+- [ ] **Cloud Deployment:** Dockerize the backend and deploy to Render/AWS.
+- [ ] **Model Selection:** Allow users to switch between GPT-3.5 and GPT-4.
 
-Click Load unpacked.
+---
 
-Select the extension folder inside the TubeChat directory (do not select the root folder).
-
-The extension is now installed!
-
-📖 Usage Guide
-
-Ensure the backend server is running (python main.py).
-
-Open any YouTube video (e.g., a podcast or tutorial).
-
-A dark sidebar will appear on the right side of the screen.
-
-The bot will automatically initialize:
-
-Status: "Processing transcript..."
-
-Status: "Ready! Ask me anything."
-
-Type a question (e.g., "What is the main conclusion?") and hit Enter.
-
-🧠 Architecture Flow
-
-Trigger: content.js detects a YouTube URL and extracts the video_id.
-
-Request: The extension sends a POST request to the FastAPI endpoint /process.
-
-Ingestion: rag_engine.py fetches the transcript using YouTubeTranscriptApi.
-
-Indexing: Text is split into chunks and embedded using OpenAIEmbeddings, then stored in a local FAISS index.
-
-Query: When the user asks a question, the system performs a similarity search on the vector store.
-
-Generation: Relevant chunks + the user question are sent to GPT-3.5 via a LangChain pipeline to generate an answer.
-
-🚀 Future Improvements
-
-Chat History: Add memory to the LangChain pipeline for multi-turn conversations.
-
-Timestamp Linking: Make timestamps in the chat clickable to jump the video player to that time.
-
-Cloud Deployment: Dockerize the backend and deploy to Render/AWS.
-
-Model Selection: Allow users to switch between GPT-3.5 and GPT-4.
-
-🤝 Contributing
-
+## 🤝 Contributing
 Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
 
-📄 License
-
-MIT
-
-code
-Code
-download
-content_copy
-expand_less
+## 📄 License
+[MIT](https://choosealicense.com/licenses/mit/)
+```
