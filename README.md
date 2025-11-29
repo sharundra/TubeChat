@@ -1,11 +1,3 @@
-Here is the raw content for your `README.md`.
-
-**How to use this:**
-1.  In VS Code, create a file named `README.md` inside your `TubeChat` folder.
-2.  **Copy the code block below** (click the "Copy" button in the top right of the block).
-3.  **Paste** it directly into your `README.md` file.
-
-```markdown
 # TubeChat 🤖: RAG-Powered YouTube Assistant
 
 **TubeChat** is a full-stack Generative AI application that transforms how users interact with video content. It integrates a **Chrome Extension** frontend with a **Python/LangChain** backend to provide real-time, context-aware Q&A for any YouTube video.
@@ -53,8 +45,6 @@ TubeChat/
     ├── manifest.json      # Chrome Extension configuration
     ├── content.js         # Content script for DOM injection & API communication
     └── styles.css         # Sidebar UI styling
-```
-
 ---
 
 ## ⚙️ Installation & Setup
