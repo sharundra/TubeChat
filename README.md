@@ -1,3 +1,4 @@
+
 # TubeChat 🤖: RAG-Powered YouTube Assistant
 
 **TubeChat** is a full-stack Generative AI application that transforms how users interact with video content. It integrates a **Chrome Extension** frontend with a **Python/LangChain** backend to provide real-time, context-aware Q&A for any YouTube video.
@@ -45,6 +46,8 @@ TubeChat/
     ├── manifest.json      # Chrome Extension configuration
     ├── content.js         # Content script for DOM injection & API communication
     └── styles.css         # Sidebar UI styling
+```
+
 ---
 
 ## ⚙️ Installation & Setup
@@ -112,18 +115,3 @@ The backend handles the heavy lifting: fetching transcripts and running the LLM 
 6.  **Generation:** Relevant chunks + the user question are sent to GPT-3.5 via a LangChain pipeline to generate an answer.
 
 ---
-
-## 🚀 Future Improvements
-- [ ] **Chat History:** Add memory to the LangChain pipeline for multi-turn conversations.
-- [ ] **Timestamp Linking:** Make timestamps in the chat clickable to jump the video player to that time.
-- [ ] **Cloud Deployment:** Dockerize the backend and deploy to Render/AWS.
-- [ ] **Model Selection:** Allow users to switch between GPT-3.5 and GPT-4.
-
----
-
-## 🤝 Contributing
-Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
-
-## 📄 License
-[MIT](https://choosealicense.com/licenses/mit/)
-```
